@@ -1,8 +1,8 @@
 /**
  * ==========================================================================
- * GALLERY MANAGER (js/gallery.js)
+ * GALLERY MANAGER (js/gallery.js - OPTIMIZED)
  * Loads photos from data/photos.json, manages Polaroid creation,
- * staggered blooming animation from bouquet, and layout balancing.
+ * staggered blooming animation from bouquet with 1.5x larger dimensions.
  * ==========================================================================
  */
 
@@ -27,16 +27,16 @@ const GalleryManager = (function () {
   let isBloomed = false;
 
   /**
-   * Pre-calculated harmonious offsets matching Reference Image 2
-   * (Values in pixels relative to bouquet center, scaled responsively in CSS/JS)
+   * Harmonious offsets calibrated for 1.5x enlarged Polaroids
+   * (Values in percent relative to bouquet center)
    */
   const POLAROID_SLOTS = [
-    { id: 'top-center', xPercent: 0,   yPercent: -42, rot: 1,   zIndex: 12 },
-    { id: 'top-left',   xPercent: -28, yPercent: -36, rot: -9,  zIndex: 11 },
-    { id: 'top-right',  xPercent: 28,  yPercent: -36, rot: 8,   zIndex: 11 },
-    { id: 'mid-left',   xPercent: -32, yPercent: -14, rot: -11, zIndex: 14 },
+    { id: 'top-center', xPercent: 0,   yPercent: -45, rot: 1,   zIndex: 12 },
+    { id: 'top-left',   xPercent: -33, yPercent: -38, rot: -9,  zIndex: 11 },
+    { id: 'top-right',  xPercent: 33,  yPercent: -38, rot: 8,   zIndex: 11 },
+    { id: 'mid-left',   xPercent: -36, yPercent: -14, rot: -11, zIndex: 14 },
     { id: 'mid-center', xPercent: 0,   yPercent: -12, rot: 2,   zIndex: 15 },
-    { id: 'mid-right',  xPercent: 32,  yPercent: -14, rot: 10,  zIndex: 14 }
+    { id: 'mid-right',  xPercent: 36,  yPercent: -14, rot: 10,  zIndex: 14 }
   ];
 
   /**
@@ -80,16 +80,13 @@ const GalleryManager = (function () {
       item.id = `polaroid-${index + 1}`;
       item.style.zIndex = slot.zIndex;
 
-      // Random jitter (-2 to +2 deg) added to slot base rotation
+      // Random subtle rotation jitter
       const jitter = (Math.random() - 0.5) * 3;
       const finalRot = Math.round(slot.rot + jitter);
 
       item.dataset.xPercent = slot.xPercent;
       item.dataset.yPercent = slot.yPercent;
       item.dataset.rotation = finalRot;
-
-      // Target CSS properties stored as custom properties
-      item.style.setProperty('--target-rot', `${finalRot}deg`);
 
       const img = document.createElement('img');
       img.className = 'polaroid-photo';
@@ -104,7 +101,7 @@ const GalleryManager = (function () {
     });
 
     updatePolaroidPositions();
-    window.addEventListener('resize', updatePolaroidPositions);
+    window.addEventListener('resize', updatePolaroidPositions, { passive: true });
   }
 
   /**
@@ -135,30 +132,26 @@ const GalleryManager = (function () {
 
   /**
    * Trigger staggered blooming animation of Polaroids
-   * Returns a promise that resolves when all photos have appeared
    */
   function bloom() {
     if (isBloomed) return Promise.resolve();
     isBloomed = true;
 
     return new Promise(resolve => {
-      const delayBetweenPhotos = 190; // ms
-      const animationDuration = 700; // ms
+      const delayBetweenPhotos = 180; // ms
+      const animationDuration = 650; // ms
 
       polaroidElements.forEach((item, idx) => {
         const rot = parseFloat(item.dataset.rotation) || 0;
 
         setTimeout(() => {
           item.classList.add('visible', 'bloomed');
-
-          // Spring physics transition
-          item.style.transition = `transform ${animationDuration}ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity ${animationDuration * 0.7}ms ease-out`;
+          item.style.transition = `transform ${animationDuration}ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity ${animationDuration * 0.6}ms ease-out`;
 
           const targetX = item.style.getPropertyValue('--target-x');
           const targetY = item.style.getPropertyValue('--target-y');
           item.style.transform = `translate(calc(-50% + ${targetX}), calc(-50% + ${targetY})) scale(1) rotate(${rot}deg)`;
 
-          // If last photo, resolve promise after animation settles
           if (idx === polaroidElements.length - 1) {
             setTimeout(resolve, animationDuration);
           }

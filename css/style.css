@@ -1,17 +1,18 @@
 /* ==========================================================================
-   INTERACTIVE FLOWER GIFT - 20/10 | CORE STYLES
+   INTERACTIVE FLOWER GIFT - 20/10 | CORE STYLES (SUPER OPTIMIZED)
    Romantic Luxury / Dreamy / Cinematic / Minimal
+   60 FPS Mobile-Optimized with 1.5x Enhanced Typography & Imagery
    ========================================================================== */
 
 :root {
   --bg-color: #050305;
   --pink-pastel: #f6bfd0;
   --pink-neon: #ff75c8;
-  --pink-glow: rgba(255, 117, 200, 0.65);
+  --pink-glow: rgba(255, 117, 200, 0.6);
   --champagne: #f3dfbf;
   --white: #fffaf7;
   --heart-red: #ff4b35;
-  --heart-red-glow: rgba(255, 75, 53, 0.7);
+  --heart-red-glow: rgba(255, 75, 53, 0.65);
 
   --font-main: 'Quicksand', 'Be Vietnam Pro', -apple-system, sans-serif;
   --font-viet: 'Be Vietnam Pro', 'Quicksand', sans-serif;
@@ -20,7 +21,7 @@
   --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Base Reset & Lock */
+/* Base Reset & Hardware Accelerated Defaults */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -38,9 +39,11 @@ html, body {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Fullscreen Background Canvas */
+/* Fullscreen Background Canvas (GPU accelerated) */
 #star-canvas {
   position: fixed;
   top: 0;
@@ -49,35 +52,35 @@ html, body {
   height: 100vh;
   z-index: 1;
   pointer-events: none;
+  will-change: transform;
 }
 
-/* Ambient Dreamy Glow Spots */
+/* Ambient Dreamy Glow Spots - Optimized using native gradients without expensive filter:blur */
 .ambient-glow {
   position: fixed;
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(80px);
-  opacity: 0.18;
+  opacity: 0.22;
   z-index: 2;
-  transition: opacity 1.5s ease;
+  transform: translateZ(0);
 }
 
 .glow-top {
-  top: -10%;
+  top: -15%;
   left: 50%;
-  transform: translateX(-50%);
-  width: 450px;
-  height: 350px;
-  background: radial-gradient(circle, var(--pink-pastel) 0%, transparent 70%);
+  transform: translateX(-50%) translateZ(0);
+  width: 550px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(246, 191, 208, 0.35) 0%, rgba(246, 191, 208, 0.1) 40%, transparent 70%);
 }
 
 .glow-center {
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(246, 191, 208, 0.25) 0%, rgba(243, 223, 191, 0.12) 40%, transparent 70%);
+  transform: translate(-50%, -50%) translateZ(0);
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(255, 117, 200, 0.16) 0%, rgba(243, 223, 191, 0.08) 45%, transparent 70%);
 }
 
 /* ==========================================================================
@@ -88,10 +91,10 @@ html, body {
   position: fixed;
   top: 24px;
   right: 24px;
-  width: 46px;
-  height: 46px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: rgba(10, 6, 10, 0.65);
+  background: rgba(12, 8, 12, 0.7);
   border: 1.5px solid var(--pink-pastel);
   color: var(--pink-pastel);
   cursor: pointer;
@@ -99,33 +102,33 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 0 16px rgba(246, 191, 208, 0.35);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 0 14px rgba(246, 191, 208, 0.3);
+  transition: transform 0.2s ease, border-color 0.2s ease;
   outline: none;
+  transform: translateZ(0);
 }
 
 .music-btn:hover {
-  transform: scale(1.08);
+  transform: scale(1.08) translateZ(0);
   border-color: var(--pink-neon);
-  box-shadow: 0 0 22px rgba(255, 117, 200, 0.6);
+  box-shadow: 0 0 20px rgba(255, 117, 200, 0.55);
   color: var(--pink-neon);
 }
 
 .music-icon-wrap {
   position: relative;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .music-icon {
-  width: 20px;
-  height: 20px;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  width: 22px;
+  height: 22px;
 }
 
 .music-icon.hidden {
@@ -168,7 +171,7 @@ html, body {
   height: 100%;
   display: none;
   opacity: 0;
-  transition: opacity 0.8s var(--ease-cinematic);
+  transition: opacity 0.7s var(--ease-cinematic);
 }
 
 .stage-section.active {
@@ -177,7 +180,7 @@ html, body {
 }
 
 /* ==========================================================================
-   STAGE 1 & 2: BOUQUET & MEMORIES
+   STAGE 1 & 2: BOUQUET & MEMORIES (1.5x Enhanced Sizing)
    ========================================================================== */
 
 #stage-bouquet {
@@ -186,6 +189,7 @@ html, body {
   justify-content: center;
   position: relative;
   will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 /* Floating Butterflies */
@@ -193,50 +197,49 @@ html, body {
   position: absolute;
   z-index: 30;
   pointer-events: none;
-  filter: drop-shadow(0 0 8px rgba(255, 117, 200, 0.8));
-  opacity: 0.92;
+  opacity: 0.95;
+  transform: translateZ(0);
 }
 
 .butterfly-img {
-  width: 32px;
+  width: 38px; /* 1.5x larger */
   height: auto;
   animation: butterflyWingFlap 0.25s infinite ease-in-out alternate;
 }
 
 .butterfly-left {
-  top: 22%;
-  left: 28%;
+  top: 20%;
+  left: 24%;
   animation: butterflyFlutterLeft 9s infinite ease-in-out;
 }
 
 .butterfly-right {
-  top: 26%;
-  right: 28%;
+  top: 24%;
+  right: 24%;
   animation: butterflyFlutterRight 8s infinite ease-in-out 1.2s;
 }
 
-/* Bouquet Centerpiece Wrapper */
+/* Bouquet Centerpiece Wrapper - 1.5x Enhanced Size */
 .bouquet-wrapper {
   position: relative;
-  width: min(440px, 86vw);
-  height: min(530px, 66vh);
+  width: min(480px, 90vw);
+  height: min(580px, 68vh);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   animation: floatBouquet 5.5s infinite ease-in-out;
-  transition: transform 0.4s ease, filter 0.4s ease;
+  transition: transform 0.35s ease;
   will-change: transform;
+  transform: translateZ(0);
 }
 
 .bouquet-wrapper:hover {
-  transform: scale(1.03);
-  filter: drop-shadow(0 0 25px rgba(246, 191, 208, 0.45));
+  transform: scale(1.03) translateZ(0);
 }
 
 .bouquet-wrapper.holding {
-  transform: scale(0.97);
-  filter: drop-shadow(0 0 35px rgba(255, 117, 200, 0.7));
+  transform: scale(0.97) translateZ(0);
 }
 
 /* Hold Progress Ring */
@@ -249,7 +252,7 @@ html, body {
   pointer-events: none;
   z-index: 25;
   opacity: 0;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.2s ease;
 }
 
 .hold-progress-svg.visible {
@@ -258,19 +261,18 @@ html, body {
 
 .progress-bg {
   fill: none;
-  stroke: rgba(246, 191, 208, 0.12);
-  stroke-width: 3;
+  stroke: rgba(246, 191, 208, 0.15);
+  stroke-width: 3.5;
 }
 
 .progress-bar {
   fill: none;
-  stroke: url(#hold-gradient);
   stroke: var(--pink-neon);
-  stroke-width: 4;
+  stroke-width: 4.5;
   stroke-linecap: round;
-  stroke-dasharray: 1800;
-  stroke-dashoffset: 1800;
-  filter: drop-shadow(0 0 10px var(--pink-neon));
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  filter: drop-shadow(0 0 8px var(--pink-neon));
   transition: stroke-dashoffset 0.8s linear;
 }
 
@@ -294,7 +296,7 @@ html, body {
   object-fit: contain;
   pointer-events: none;
   z-index: 10;
-  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.85));
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8));
 }
 
 .bouquet-front-img {
@@ -305,7 +307,7 @@ html, body {
   height: 100%;
   object-fit: contain;
   pointer-events: none;
-  z-index: 20; /* In front of photo stems! */
+  z-index: 20; /* Front wrap sits over photo stems */
 }
 
 /* Polaroid Photos Gallery Layer */
@@ -316,31 +318,32 @@ html, body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 15; /* Sits between bouquet base and bouquet front wrapper */
+  z-index: 15;
 }
 
-/* Individual Polaroid Card */
+/* Individual Polaroid Card - 1.5x Enhanced Size (~155px wide vs 110px) */
 .polaroid-item {
   position: absolute;
   top: 48%;
   left: 50%;
-  width: 110px;
+  width: 155px;
   background: var(--white);
-  padding: 6px 6px 18px 6px;
-  border-radius: 3px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.75), 0 0 12px rgba(246, 191, 208, 0.25);
+  padding: 8px 8px 24px 8px;
+  border-radius: 4px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.75), 0 0 10px rgba(246, 191, 208, 0.25);
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
   transform-origin: center bottom;
   pointer-events: auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   will-change: transform, opacity;
+  contain: layout style;
 }
 
 .polaroid-item:hover {
   z-index: 28 !important;
-  transform: translate(var(--target-x), var(--target-y)) scale(1.15) rotate(0deg) !important;
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.85), 0 0 20px var(--pink-glow);
+  transform: translate(var(--target-x), var(--target-y)) scale(1.1) rotate(0deg) !important;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.85), 0 0 16px var(--pink-glow);
 }
 
 .polaroid-item.visible {
@@ -349,42 +352,43 @@ html, body {
 
 .polaroid-photo {
   width: 100%;
-  height: 115px;
+  height: 160px; /* 1.5x larger image */
   object-fit: cover;
   display: block;
-  border-radius: 2px;
+  border-radius: 3px;
   background: #2a2026;
 }
 
-/* Instruction Text Hint */
+/* Instruction Text Hint - 1.5x Larger (21px vs 15px) */
 .hint-container {
   position: absolute;
-  bottom: 8%;
+  bottom: 6%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
   z-index: 30;
   pointer-events: none;
+  width: 92%;
 }
 
 .hint-text {
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 21px; /* 1.5x larger */
+  font-weight: 600;
   letter-spacing: 0.8px;
   color: var(--pink-pastel);
-  text-shadow: 0 0 10px rgba(246, 191, 208, 0.6);
+  text-shadow: 0 0 12px rgba(246, 191, 208, 0.65);
   animation: pulseHint 3s infinite ease-in-out;
-  transition: opacity 0.4s ease, transform 0.4s ease, color 0.4s ease;
+  transition: opacity 0.35s ease, color 0.35s ease;
   white-space: nowrap;
 }
 
 .hint-text.glow-mode {
   color: var(--pink-neon);
-  text-shadow: 0 0 15px var(--pink-neon), 0 0 25px var(--pink-neon);
+  text-shadow: 0 0 16px var(--pink-neon);
 }
 
 /* ==========================================================================
-   STAGE 3: 3D UNIVERSE OF WISHES
+   STAGE 3: 3D UNIVERSE OF WISHES (SUPER 60 FPS GPU OPTIMIZATION)
    ========================================================================== */
 
 #stage-universe {
@@ -393,12 +397,13 @@ html, body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  perspective: 1000px;
-  -webkit-perspective: 1000px;
+  perspective: 900px;
+  -webkit-perspective: 900px;
   overflow: hidden;
   background: transparent;
   display: none;
   opacity: 0;
+  contain: strict;
 }
 
 #stage-universe.active {
@@ -425,88 +430,91 @@ html, body {
   will-change: transform;
 }
 
-/* 3D Floating Wishes */
+/* 3D Floating Wishes - 1.5x Larger (26px vs 18px), Optimized Single Glow */
 .universe-wish {
   position: absolute;
   top: 0;
   left: 0;
   color: var(--pink-neon);
   font-family: var(--font-viet);
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: 700;
+  font-size: 26px; /* 1.5x larger */
   white-space: nowrap;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 10px #ff75c8, 0 0 22px rgba(255, 117, 200, 0.85), 0 0 35px rgba(255, 117, 200, 0.55);
+  letter-spacing: 0.6px;
+  text-shadow: 0 0 10px #ff75c8, 0 0 20px rgba(255, 117, 200, 0.7);
   transform-style: preserve-3d;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  will-change: transform, opacity;
+  will-change: transform;
+  contain: layout style;
   pointer-events: auto;
   cursor: default;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  transition: color 0.25s ease;
 }
 
 .universe-wish:hover {
   color: #fff;
-  text-shadow: 0 0 12px #fff, 0 0 28px var(--pink-neon), 0 0 45px var(--pink-neon);
+  text-shadow: 0 0 14px #fff, 0 0 25px var(--pink-neon);
 }
 
-/* 3D Floating Photos */
+/* 3D Floating Photos - 1.5x Larger (190px x 235px vs 130px x 160px) */
 .universe-photo-card {
   position: absolute;
   top: 0;
   left: 0;
-  width: 130px;
-  height: 160px;
+  width: 190px; /* 1.5x larger */
+  height: 235px; /* 1.5x larger */
   background: var(--white);
-  padding: 6px 6px 20px 6px;
+  padding: 8px 8px 24px 8px;
   border-radius: 8px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.85), 0 0 20px rgba(246, 191, 208, 0.4);
+  box-shadow: 0 15px 32px rgba(0, 0, 0, 0.8), 0 0 16px rgba(246, 191, 208, 0.35);
   transform-style: preserve-3d;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  will-change: transform, opacity;
+  will-change: transform;
+  contain: layout style;
   pointer-events: auto;
   cursor: pointer;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: box-shadow 0.25s ease;
 }
 
 .universe-photo-card:hover {
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.95), 0 0 30px var(--pink-neon);
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.9), 0 0 25px var(--pink-neon);
 }
 
 .universe-photo-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 5px;
   display: block;
 }
 
-/* 3D Floating Hearts */
+/* 3D Floating Hearts - 1.5x Larger (40px vs 28px) */
 .universe-heart {
   position: absolute;
   top: 0;
   left: 0;
-  width: 28px;
-  height: 28px;
+  width: 40px; /* 1.5x larger */
+  height: 40px; /* 1.5x larger */
   color: var(--heart-red);
-  filter: drop-shadow(0 0 12px var(--heart-red-glow)) drop-shadow(0 0 22px rgba(255, 75, 53, 0.5));
+  filter: drop-shadow(0 0 10px var(--heart-red-glow));
   transform-style: preserve-3d;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  will-change: transform, opacity;
+  will-change: transform;
+  contain: layout style;
   pointer-events: none;
 }
 
 .universe-heart.pink-heart {
   color: var(--pink-neon);
-  filter: drop-shadow(0 0 12px var(--pink-glow)) drop-shadow(0 0 22px rgba(255, 117, 200, 0.5));
+  filter: drop-shadow(0 0 10px var(--pink-glow));
 }
 
 .universe-heart.champagne-heart {
   color: var(--champagne);
-  filter: drop-shadow(0 0 12px rgba(243, 223, 191, 0.8));
+  filter: drop-shadow(0 0 10px rgba(243, 223, 191, 0.7));
 }
 
 .universe-heart svg {
@@ -519,17 +527,17 @@ html, body {
 /* Universe Bottom Hint */
 .universe-overlay-hint {
   position: absolute;
-  bottom: 24px;
+  bottom: 22px;
   left: 50%;
   transform: translateX(-50%);
   pointer-events: none;
-  opacity: 0.8;
-  transition: opacity 1s ease;
+  opacity: 0.85;
 }
 
 .universe-hint-text {
-  font-size: 13px;
+  font-size: 15px; /* 1.5x larger */
   letter-spacing: 0.6px;
   color: var(--champagne);
-  text-shadow: 0 0 8px rgba(243, 223, 191, 0.5);
+  text-shadow: 0 0 8px rgba(243, 223, 191, 0.6);
+  white-space: nowrap;
 }

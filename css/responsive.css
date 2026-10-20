@@ -1,133 +1,152 @@
 /* ==========================================================================
-   INTERACTIVE FLOWER GIFT - 20/10 | RESPONSIVE STYLES
-   Optimized for Mobile, Tablet, Laptop, and High-Res Desktop
+   INTERACTIVE FLOWER GIFT - 20/10 | RESPONSIVE STYLES (OPTIMIZED 1.5X SIZES)
+   60 FPS Mobile Performance with Enhanced Readability and Presence
    ========================================================================== */
 
 /* Tablets & Small Laptops (max-width: 1024px) */
 @media (max-width: 1024px) {
   .bouquet-wrapper {
-    width: min(390px, 84vw);
-    height: min(480px, 64vh);
+    width: min(430px, 88vw);
+    height: min(520px, 66vh);
   }
 
   .polaroid-item {
-    width: 95px;
-    padding: 5px 5px 15px 5px;
+    width: 135px;
+    padding: 7px 7px 20px 7px;
   }
 
   .polaroid-photo {
-    height: 100px;
+    height: 140px;
   }
 
   .universe-wish {
-    font-size: 16px;
+    font-size: 23px;
+  }
+
+  .universe-photo-card {
+    width: 165px;
+    height: 205px;
+  }
+
+  .universe-heart {
+    width: 35px;
+    height: 35px;
   }
 }
 
 /* Mobile Devices (max-width: 768px) */
 @media (max-width: 768px) {
   .music-btn {
-    top: 18px;
-    right: 18px;
-    width: 42px;
-    height: 42px;
+    top: 16px;
+    right: 16px;
+    width: 46px;
+    height: 46px;
   }
 
   .music-icon {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
   }
 
   .bouquet-wrapper {
-    width: min(340px, 88vw);
-    height: min(430px, 60vh);
+    width: min(370px, 92vw);
+    height: min(460px, 62vh);
   }
 
   .polaroid-item {
-    width: 82px;
-    padding: 4px 4px 13px 4px;
-    border-radius: 2px;
+    width: 118px;
+    padding: 6px 6px 17px 6px;
+    border-radius: 3px;
   }
 
   .polaroid-photo {
-    height: 86px;
+    height: 122px;
   }
 
   .butterfly-img {
-    width: 26px;
+    width: 32px;
   }
 
   .butterfly-left {
-    top: 18%;
-    left: 12%;
+    top: 16%;
+    left: 8%;
   }
 
   .butterfly-right {
-    top: 22%;
-    right: 12%;
+    top: 20%;
+    right: 8%;
   }
 
   .hint-container {
-    bottom: 6%;
-    width: 90%;
+    bottom: 5%;
+    width: 94%;
   }
 
   .hint-text {
-    font-size: 13.5px;
+    font-size: 18.5px; /* 1.5x larger on mobile */
     letter-spacing: 0.5px;
   }
 
   .universe-wish {
-    font-size: 15px;
-    letter-spacing: 0.3px;
+    font-size: 20.5px; /* 1.5x larger on mobile */
+    letter-spacing: 0.4px;
+    text-shadow: 0 0 8px #ff75c8, 0 0 16px rgba(255, 117, 200, 0.7);
   }
 
   .universe-photo-card {
-    width: 105px;
-    height: 130px;
+    width: 145px;
+    height: 180px;
+    padding: 6px 6px 18px 6px;
   }
 
   .universe-heart {
-    width: 22px;
-    height: 22px;
+    width: 30px;
+    height: 30px;
   }
 
   .universe-overlay-hint {
     bottom: 16px;
+    width: 90%;
+    text-align: center;
   }
 
   .universe-hint-text {
-    font-size: 11.5px;
+    font-size: 13.5px;
   }
 }
 
 /* Small Mobile Screens (max-width: 480px) */
 @media (max-width: 480px) {
   .bouquet-wrapper {
-    width: min(310px, 90vw);
-    height: min(390px, 58vh);
+    width: min(340px, 94vw);
+    height: min(420px, 58vh);
   }
 
   .polaroid-item {
-    width: 74px;
-    padding: 4px 4px 11px 4px;
+    width: 106px;
+    padding: 5px 5px 15px 5px;
   }
 
   .polaroid-photo {
-    height: 78px;
+    height: 110px;
   }
 
   .hint-text {
-    font-size: 13px;
+    font-size: 17px;
   }
 
   .universe-wish {
-    font-size: 13.5px;
+    font-size: 18.5px;
   }
 
   .universe-photo-card {
-    width: 95px;
-    height: 118px;
+    width: 130px;
+    height: 160px;
+  }
+
+  .universe-heart {
+    width: 28px;
+    height: 28px;
   }
 }
 
@@ -151,11 +170,11 @@
   }
 
   .hint-container {
-    bottom: calc(20px + env(safe-area-inset-bottom));
+    bottom: calc(18px + env(safe-area-inset-bottom));
   }
 
   .universe-overlay-hint {
-    bottom: calc(14px + env(safe-area-inset-bottom));
+    bottom: calc(12px + env(safe-area-inset-bottom));
   }
 }
 
