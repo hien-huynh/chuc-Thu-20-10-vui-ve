@@ -388,7 +388,7 @@ html, body {
 }
 
 /* ==========================================================================
-   STAGE 3: 3D UNIVERSE OF WISHES (SUPER 60 FPS GPU OPTIMIZATION)
+   STAGE 3: 3D UNIVERSE OF WISHES (TILTED 3D RIVER FLOW)
    ========================================================================== */
 
 #stage-universe {
@@ -397,8 +397,9 @@ html, body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  perspective: 900px;
-  -webkit-perspective: 900px;
+  perspective: 1100px;
+  -webkit-perspective: 1100px;
+  perspective-origin: 50% 50%;
   overflow: hidden;
   background: transparent;
   display: none;
@@ -417,6 +418,9 @@ html, body {
   position: relative;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .universe-world {
@@ -430,91 +434,90 @@ html, body {
   will-change: transform;
 }
 
-/* 3D Floating Wishes - 1.5x Larger (26px vs 18px), Optimized Single Glow */
+/* 3D Floating Wishes - Elegant readable size, subtle glow, consistent alignment */
 .universe-wish {
   position: absolute;
   top: 0;
   left: 0;
   color: var(--pink-neon);
   font-family: var(--font-viet);
-  font-weight: 700;
-  font-size: 26px; /* 1.5x larger */
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.4;
   white-space: nowrap;
-  letter-spacing: 0.6px;
-  text-shadow: 0 0 10px #ff75c8, 0 0 20px rgba(255, 117, 200, 0.7);
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 8px #ff75c8, 0 0 16px rgba(255, 117, 200, 0.65);
   transform-style: preserve-3d;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  will-change: transform;
-  contain: layout style;
+  will-change: transform, opacity;
   pointer-events: auto;
   cursor: default;
-  transition: color 0.25s ease;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+  user-select: none;
 }
 
 .universe-wish:hover {
   color: #fff;
-  text-shadow: 0 0 14px #fff, 0 0 25px var(--pink-neon);
+  text-shadow: 0 0 12px #fff, 0 0 22px var(--pink-neon);
 }
 
-/* 3D Floating Photos - 1.5x Larger (190px x 235px vs 130px x 160px) */
+/* 3D Floating Photos - Proportional Polaroid Cards */
 .universe-photo-card {
   position: absolute;
   top: 0;
   left: 0;
-  width: 190px; /* 1.5x larger */
-  height: 235px; /* 1.5x larger */
+  width: 120px;
+  height: 152px;
   background: var(--white);
-  padding: 8px 8px 24px 8px;
-  border-radius: 8px;
-  box-shadow: 0 15px 32px rgba(0, 0, 0, 0.8), 0 0 16px rgba(246, 191, 208, 0.35);
+  padding: 6px 6px 18px 6px;
+  border-radius: 6px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.75), 0 0 14px rgba(246, 191, 208, 0.3);
   transform-style: preserve-3d;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  will-change: transform;
-  contain: layout style;
+  will-change: transform, opacity;
   pointer-events: auto;
   cursor: pointer;
-  transition: box-shadow 0.25s ease;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .universe-photo-card:hover {
-  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.9), 0 0 25px var(--pink-neon);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.85), 0 0 22px var(--pink-neon);
 }
 
 .universe-photo-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: 4px;
   display: block;
 }
 
-/* 3D Floating Hearts - 1.5x Larger (40px vs 28px) */
+/* 3D Floating Hearts - Delicate luminous accents */
 .universe-heart {
   position: absolute;
   top: 0;
   left: 0;
-  width: 40px; /* 1.5x larger */
-  height: 40px; /* 1.5x larger */
+  width: 24px;
+  height: 24px;
   color: var(--heart-red);
-  filter: drop-shadow(0 0 10px var(--heart-red-glow));
+  filter: drop-shadow(0 0 8px var(--heart-red-glow));
   transform-style: preserve-3d;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  will-change: transform;
-  contain: layout style;
+  will-change: transform, opacity;
   pointer-events: none;
 }
 
 .universe-heart.pink-heart {
   color: var(--pink-neon);
-  filter: drop-shadow(0 0 10px var(--pink-glow));
+  filter: drop-shadow(0 0 8px var(--pink-glow));
 }
 
 .universe-heart.champagne-heart {
   color: var(--champagne);
-  filter: drop-shadow(0 0 10px rgba(243, 223, 191, 0.7));
+  filter: drop-shadow(0 0 8px rgba(243, 223, 191, 0.7));
 }
 
 .universe-heart svg {
@@ -527,17 +530,17 @@ html, body {
 /* Universe Bottom Hint */
 .universe-overlay-hint {
   position: absolute;
-  bottom: 22px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   pointer-events: none;
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 .universe-hint-text {
-  font-size: 15px; /* 1.5x larger */
+  font-size: 13.5px;
   letter-spacing: 0.6px;
   color: var(--champagne);
-  text-shadow: 0 0 8px rgba(243, 223, 191, 0.6);
+  text-shadow: 0 0 8px rgba(243, 223, 191, 0.5);
   white-space: nowrap;
 }
