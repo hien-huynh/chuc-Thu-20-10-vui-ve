@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Chúc Mừng 20/10 - Món Quà Yêu Thương</title>
+  <meta name="description" content="Món quà tương tác nghệ thuật chúc mừng ngày Phụ nữ Việt Nam 20/10">
+
+  <!-- Google Fonts: Quicksand & Be Vietnam Pro -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- Starfield & Ambient Glow Canvas -->
+  <canvas id="star-canvas"></canvas>
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-glow glow-top"></div>
+  <div class="ambient-glow glow-center"></div>
+
+  <!-- Music Control Button (Top Right) -->
+  <button id="music-toggle" class="music-btn" aria-label="Bật/Tắt nhạc nền" title="Bật/Tắt nhạc">
+    <div class="music-icon-wrap">
+      <!-- Music Note / Speaker Icon -->
+      <svg id="icon-sound-on" class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+      </svg>
+      <svg id="icon-sound-off" class="music-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <line x1="23" y1="9" x2="17" y2="15"></line>
+        <line x1="17" y1="9" x2="23" y2="15"></line>
+      </svg>
+    </div>
+    <span class="music-pulse-ring"></span>
+  </button>
+
+  <!-- Main Stage Container -->
+  <main id="app-container">
+    
+    <!-- STAGE 1 & 2: BOUQUET & MEMORIES -->
+    <section id="stage-bouquet" class="stage-section active">
+      
+      <!-- Floating Butterflies -->
+      <div class="butterfly butterfly-left">
+        <img src="assets/butterfly.png" alt="Bướm hồng" class="butterfly-img">
+      </div>
+      <div class="butterfly butterfly-right">
+        <img src="assets/butterfly.png" alt="Bướm hồng" class="butterfly-img">
+      </div>
+
+      <!-- Bouquet Interactive Centerpiece -->
+      <div id="bouquet-wrapper" class="bouquet-wrapper">
+        
+        <!-- Progress Ring for 800ms Long-Press Feedback -->
+        <svg id="hold-progress-ring" class="hold-progress-svg" viewBox="0 0 460 540">
+          <rect class="progress-bg" x="10" y="10" width="440" height="520" rx="40" ry="40" />
+          <rect class="progress-bar" x="10" y="10" width="440" height="520" rx="40" ry="40" />
+        </svg>
+
+        <!-- Polaroid Photos Gallery (Emerges from behind flowers) -->
+        <div id="polaroid-gallery" class="polaroid-gallery">
+          <!-- Dynamically populated from data/photos.json -->
+        </div>
+
+        <!-- Bouquet Base Layer -->
+        <div class="bouquet-img-box">
+          <img id="bouquet-img" src="assets/bouquet.png" alt="Bó hoa hồng 20/10" class="bouquet-img" draggable="false">
+          <!-- Foreground Wrapping Paper & Ribbon Bow (Sits over photo stems) -->
+          <img id="bouquet-front" src="assets/bouquet_front.png" alt="" class="bouquet-front-img" draggable="false">
+        </div>
+
+      </div>
+
+      <!-- Floating Instruction Hint -->
+      <div id="stage-hint-container" class="hint-container">
+        <p id="stage-hint" class="hint-text">Chạm vào bó hoa ♡</p>
+      </div>
+
+    </section>
+
+    <!-- STAGE 3: 3D UNIVERSE OF WISHES -->
+    <section id="stage-universe" class="stage-section" aria-hidden="true">
+      <!-- 3D Camera Viewport -->
+      <div id="universe-viewport" class="universe-viewport">
+        <!-- 3D World Space (Contains all floating objects) -->
+        <div id="universe-world" class="universe-world">
+          <!-- Wishes, 3D Photos, and Glowing Hearts injected here -->
+        </div>
+      </div>
+
+      <!-- Universe Controls / Navigation Hint -->
+      <div id="universe-overlay-hint" class="universe-overlay-hint">
+        <p class="universe-hint-text">✨ Di chuyển chuột hoặc vuốt để khám phá bầu trời lời chúc</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Audio Element -->
+  <audio id="bg-audio" preload="auto" loop playsinline></audio>
+
+  <!-- JavaScript Modules -->
+  <script src="js/audio.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/wishes.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/bouquet.js"></script>
+  <script src="js/universe.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
