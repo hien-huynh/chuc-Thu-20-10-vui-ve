@@ -92,7 +92,7 @@ const BouquetController = (function () {
       if (stageHint && currentStage === 2) {
         stageHint.style.opacity = '0';
         setTimeout(() => {
-          stageHint.textContent = 'Nhấn giữ để khám phá điều đặc biệt ♡';
+          stageHint.innerHTML = 'Hic hông chứa hết được tất cả chị em, đại diện thoi nha <br>Nhấn giữ để khám phá điều đặc biệt ♡';
           stageHint.classList.add('glow-mode');
           stageHint.style.opacity = '1';
         }, 400);
