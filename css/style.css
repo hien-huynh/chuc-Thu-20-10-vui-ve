@@ -434,7 +434,7 @@ html, body {
   will-change: transform;
 }
 
-/* 3D Floating Wishes - Elegant readable size, subtle glow, consistent alignment */
+/* 3D Floating Wishes - Enlarged size & highlight variations */
 .universe-wish {
   position: absolute;
   top: 0;
@@ -442,11 +442,11 @@ html, body {
   color: var(--pink-neon);
   font-family: var(--font-viet);
   font-weight: 600;
-  font-size: 17px;
+  font-size: 23px;
   line-height: 1.4;
   white-space: nowrap;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 8px #ff75c8, 0 0 16px rgba(255, 117, 200, 0.65);
+  letter-spacing: 0.6px;
+  text-shadow: 0 0 10px #ff75c8, 0 0 20px rgba(255, 117, 200, 0.7);
   transform-style: preserve-3d;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -457,9 +457,25 @@ html, body {
   user-select: none;
 }
 
+/* Random prominently enlarged highlight wishes */
+.universe-wish.wish-large {
+  font-size: 31px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #ffa1dc;
+  text-shadow: 0 0 12px #ff75c8, 0 0 26px rgba(255, 117, 200, 0.85);
+}
+
+.universe-wish.wish-accent {
+  font-size: 27px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 12px var(--pink-neon), 0 0 24px var(--pink-neon);
+}
+
 .universe-wish:hover {
   color: #fff;
-  text-shadow: 0 0 12px #fff, 0 0 22px var(--pink-neon);
+  text-shadow: 0 0 14px #fff, 0 0 28px var(--pink-neon);
 }
 
 /* 3D Floating Photos - Proportional Polaroid Cards */

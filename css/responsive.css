@@ -20,7 +20,15 @@
   }
 
   .universe-wish {
-    font-size: 16px;
+    font-size: 20px;
+  }
+
+  .universe-wish.wish-large {
+    font-size: 26px;
+  }
+
+  .universe-wish.wish-accent {
+    font-size: 23px;
   }
 
   .universe-photo-card {
@@ -88,14 +96,23 @@
   }
 
   .universe-wish {
-    font-size: 14px;
+    font-size: 18px;
     letter-spacing: 0.3px;
-    text-shadow: 0 0 6px #ff75c8, 0 0 14px rgba(255, 117, 200, 0.65);
+    text-shadow: 0 0 8px #ff75c8, 0 0 16px rgba(255, 117, 200, 0.7);
+  }
+
+  .universe-wish.wish-large {
+    font-size: 23px;
+    font-weight: 700;
+  }
+
+  .universe-wish.wish-accent {
+    font-size: 20px;
   }
 
   .universe-photo-card {
-    width: 92px;
-    height: 118px;
+    width: 96px;
+    height: 122px;
     padding: 4px 4px 14px 4px;
   }
 
@@ -136,12 +153,20 @@
   }
 
   .universe-wish {
-    font-size: 13px;
+    font-size: 16px;
+  }
+
+  .universe-wish.wish-large {
+    font-size: 20.5px;
+  }
+
+  .universe-wish.wish-accent {
+    font-size: 18px;
   }
 
   .universe-photo-card {
-    width: 82px;
-    height: 106px;
+    width: 86px;
+    height: 110px;
   }
 
   .universe-heart {

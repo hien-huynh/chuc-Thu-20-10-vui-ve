@@ -24,7 +24,7 @@ const UniverseController = (function () {
     desktopBaseYaw: -20,    // rotateY(-20deg)
     desktopBasePitch: 8,    // rotateX(8deg)
     desktopBaseRoll: -1,    // rotateZ(-1deg)
-    desktopStreamWidth: 1200,
+    desktopStreamWidth: 1350,
     desktopTopLimit: -850,
     desktopBottomLimit: 950,
 
@@ -32,13 +32,13 @@ const UniverseController = (function () {
     mobileBaseYaw: -12,     // rotateY(-12deg)
     mobileBasePitch: 6,     // rotateX(6deg)
     mobileBaseRoll: 0,
-    mobileStreamWidth: 620,
+    mobileStreamWidth: 680,
     mobileTopLimit: -650,
     mobileBottomLimit: 750,
 
-    // Depth bounds (Negative Z keeps items strictly inside perspective frustum)
-    farZ: -850,
-    nearZ: -60,
+    // Depth bounds (Brought closer to prevent text from shrinking too small)
+    farZ: -560,
+    nearZ: -30,
 
     // Flow speed (pixels per frame at 60fps)
     baseSpeed: 1.15
@@ -105,7 +105,6 @@ const UniverseController = (function () {
     // Lane division to distribute items evenly across width
     const numLanes = isMobile ? 4 : 7;
     const laneWidth = streamWidth / numLanes;
-    let laneAssignments = [];
 
     // 1. Prepare Wishes
     const wishStrings = WishesManager.generateWishPool(wishesCount);
@@ -145,7 +144,6 @@ const UniverseController = (function () {
   function computeLaneX(laneIndex, numLanes, laneWidth) {
     const leftEdge = -(numLanes * laneWidth) / 2;
     const laneCenter = leftEdge + (laneIndex + 0.5) * laneWidth;
-    // Slight random offset within the lane
     const jitter = (Math.random() - 0.5) * (laneWidth * 0.45);
     return laneCenter + jitter;
   }
@@ -154,29 +152,33 @@ const UniverseController = (function () {
    * Helper to compute Z depth layer and parallax speed
    */
   function computeDepthAndSpeed() {
-    // Z is distributed between farZ (-850) and nearZ (-60)
     const z = CONFIG.farZ + Math.random() * (CONFIG.nearZ - CONFIG.farZ);
-    // Relative depth ratio: 0 (furthest) to 1 (closest)
     const depthRatio = (z - CONFIG.farZ) / (CONFIG.nearZ - CONFIG.farZ);
-    // Speed: near objects move faster, far objects drift slower
-    const speed = CONFIG.baseSpeed * (0.8 + depthRatio * 0.6);
-    // Opacity: far objects are slightly softer, near objects are vibrant
-    const opacity = 0.45 + depthRatio * 0.55;
+    const speed = CONFIG.baseSpeed * (0.8 + depthRatio * 0.55);
+    const opacity = 0.62 + depthRatio * 0.38;
 
     return { z, speed, opacity };
   }
 
   /**
-   * Create Wish Item
+   * Create Wish Item with randomized prominence
    */
   function createWishItem(text, lane, numLanes, laneWidth, initialY, isMobile) {
     const el = document.createElement('div');
     el.className = 'universe-wish';
     el.textContent = text;
 
+    // Randomly feature ~25% as large highlight wishes, ~20% as accent white glow
+    const randType = Math.random();
+    if (randType < 0.25) {
+      el.classList.add('wish-large');
+    } else if (randType < 0.45) {
+      el.classList.add('wish-accent');
+    }
+
     const { z, speed, opacity } = computeDepthAndSpeed();
     const x = computeLaneX(lane, numLanes, laneWidth);
-    const rotZ = (Math.random() - 0.5) * 5; // Subtle uniform tilt
+    const rotZ = (Math.random() - 0.5) * 5;
 
     const item = {
       el: el,
@@ -288,14 +290,22 @@ const UniverseController = (function () {
    */
   function recycleItemToTop(item, isMobile) {
     const topLimit = isMobile ? CONFIG.mobileTopLimit : CONFIG.desktopTopLimit;
-    // Spawn just above the top edge with slight variation
     item.y = topLimit - (Math.random() * 120);
 
-    // Switch to a new or adjacent lane to ensure continuous organic distribution
     item.lane = (item.lane + Math.floor(Math.random() * 3) - 1 + item.numLanes) % item.numLanes;
     item.x = computeLaneX(item.lane, item.numLanes, item.laneWidth);
 
-    // Recompute depth and speed
+    // Re-roll highlight variety dynamically for wishes
+    if (item.type === 'wish') {
+      item.el.classList.remove('wish-large', 'wish-accent');
+      const randType = Math.random();
+      if (randType < 0.25) {
+        item.el.classList.add('wish-large');
+      } else if (randType < 0.45) {
+        item.el.classList.add('wish-accent');
+      }
+    }
+
     const { z, speed, opacity } = computeDepthAndSpeed();
     item.z = z;
     item.speed = speed;
